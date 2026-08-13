@@ -1,6 +1,24 @@
 
 class Solution {
-    public TreeNode convertBST(TreeNode root) {
+     static int sum;
+      public TreeNode convertBST(TreeNode root) {
+        sum = 0;
+        rinorder(root);
+         return root;
+
+    }
+    public void rinorder(TreeNode root){
+        if(root == null )return;
+        rinorder(root.right);
+        int val = root.val;
+        sum += val;
+        root.val = sum;
+        rinorder(root.left);
+        
+    }
+
+}
+  /*  public TreeNode convertBST(TreeNode root) {
         ArrayList<TreeNode> arr = new ArrayList<>();
         inorder(root,arr);
         int sum = 0;
@@ -22,3 +40,4 @@ class Solution {
     }
 
 }
+*/
