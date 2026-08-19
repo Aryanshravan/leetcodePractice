@@ -13,7 +13,14 @@ class Triplet implements Comparable<Triplet>{
 }
 class Solution {
     public int[][] kClosest(int[][] points, int k) {
-         PriorityQueue<Triplet> pq = new PriorityQueue<>(Collections.reverseOrder());
+
+        Arrays.sort(points, (a, b) ->
+            (a[0] * a[0] + a[1] * a[1]) -
+            (b[0] * b[0] + b[1] * b[1])
+        );
+
+        return Arrays.copyOfRange(points, 0, k);
+        /* PriorityQueue<Triplet> pq = new PriorityQueue<>(Collections.reverseOrder());
         for(int[] point : points){
             int x = point[0],y = point[1];
             int dist = x*x + y*y;
@@ -27,5 +34,6 @@ class Solution {
             ans[i][1] = top.y;
         }
         return ans;
+        */
     }
 }
