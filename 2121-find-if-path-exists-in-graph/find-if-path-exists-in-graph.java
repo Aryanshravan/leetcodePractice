@@ -5,19 +5,19 @@ class Solution {
         List<Integer> list = new ArrayList<>();
         adj.add(list);
     }
-    for(int i = 0;i<edges.length;i++){
+    boolean[] vis = new boolean[n];
+    for(int i =0 ;i<edges.length;i++){
         int a = edges[i][0];
         int b = edges[i][1];
         adj.get(a).add(b);
         adj.get(b).add(a);
     }
-    boolean[] vis = new boolean[n];
-   
-    bfs(start,vis,adj);
+    bfs(start,adj,vis);
     return vis[end];
     
+    
     }
-    public void bfs(int start , boolean[] vis, List<List<Integer>>adj ){
+    public static void bfs(int start,List<List<Integer>> adj,boolean[] vis){
         vis[start] = true;
         Queue<Integer> q = new LinkedList<>();
         q.add(start);
